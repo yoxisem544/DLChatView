@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6329ACA41C473DDE009F958D /* BubbleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329ACA31C473DDE009F958D /* BubbleViewController.swift */; };
+		6329ACA61C473EBE009F958D /* BubbleLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329ACA51C473EBE009F958D /* BubbleLeftTableViewCell.swift */; };
+		6329ACA81C4751C1009F958D /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6329ACA71C4751C1009F958D /* 11.jpg */; };
+		6329ACAA1C47589D009F958D /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329ACA91C47589D009F958D /* TextInputView.swift */; };
+		6329ACAC1C47807B009F958D /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329ACAB1C47807B009F958D /* AnimationViewController.swift */; };
 		6368EBDE1C45F303008649AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368EBDD1C45F303008649AF /* AppDelegate.swift */; };
 		6368EBE01C45F303008649AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368EBDF1C45F303008649AF /* ViewController.swift */; };
 		6368EBE31C45F303008649AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6368EBE11C45F303008649AF /* Main.storyboard */; };
@@ -14,6 +19,8 @@
 		6368EBE81C45F303008649AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6368EBE61C45F303008649AF /* LaunchScreen.storyboard */; };
 		6368EBF31C45F303008649AF /* CustomMessengerWorkoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368EBF21C45F303008649AF /* CustomMessengerWorkoutTests.swift */; };
 		6368EBFE1C45F303008649AF /* CustomMessengerWorkoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368EBFD1C45F303008649AF /* CustomMessengerWorkoutUITests.swift */; };
+		6368EC0C1C463E8D008649AF /* AccViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368EC0B1C463E8D008649AF /* AccViewController.swift */; };
+		6368EC0E1C46411E008649AF /* ATrickyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368EC0D1C46411E008649AF /* ATrickyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6329ACA31C473DDE009F958D /* BubbleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleViewController.swift; sourceTree = "<group>"; };
+		6329ACA51C473EBE009F958D /* BubbleLeftTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleLeftTableViewCell.swift; sourceTree = "<group>"; };
+		6329ACA71C4751C1009F958D /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
+		6329ACA91C47589D009F958D /* TextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		6329ACAB1C47807B009F958D /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		6368EBDA1C45F303008649AF /* CustomMessengerWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomMessengerWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6368EBDD1C45F303008649AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6368EBDF1C45F303008649AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +59,8 @@
 		6368EBF91C45F303008649AF /* CustomMessengerWorkoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomMessengerWorkoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6368EBFD1C45F303008649AF /* CustomMessengerWorkoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessengerWorkoutUITests.swift; sourceTree = "<group>"; };
 		6368EBFF1C45F303008649AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6368EC0B1C463E8D008649AF /* AccViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccViewController.swift; sourceTree = "<group>"; };
+		6368EC0D1C46411E008649AF /* ATrickyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATrickyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +91,7 @@
 		6368EBD11C45F303008649AF = {
 			isa = PBXGroup;
 			children = (
+				6368EC0D1C46411E008649AF /* ATrickyView.swift */,
 				6368EBDC1C45F303008649AF /* CustomMessengerWorkout */,
 				6368EBF11C45F303008649AF /* CustomMessengerWorkoutTests */,
 				6368EBFC1C45F303008649AF /* CustomMessengerWorkoutUITests */,
@@ -100,6 +115,12 @@
 				6368EBDD1C45F303008649AF /* AppDelegate.swift */,
 				6368EBDF1C45F303008649AF /* ViewController.swift */,
 				6368EBE11C45F303008649AF /* Main.storyboard */,
+				6329ACAB1C47807B009F958D /* AnimationViewController.swift */,
+				6329ACA91C47589D009F958D /* TextInputView.swift */,
+				6329ACA31C473DDE009F958D /* BubbleViewController.swift */,
+				6329ACA51C473EBE009F958D /* BubbleLeftTableViewCell.swift */,
+				6368EC0B1C463E8D008649AF /* AccViewController.swift */,
+				6329ACA71C4751C1009F958D /* 11.jpg */,
 				6368EBE41C45F303008649AF /* Assets.xcassets */,
 				6368EBE61C45F303008649AF /* LaunchScreen.storyboard */,
 				6368EBE91C45F303008649AF /* Info.plist */,
@@ -232,6 +253,7 @@
 				6368EBE81C45F303008649AF /* LaunchScreen.storyboard in Resources */,
 				6368EBE51C45F303008649AF /* Assets.xcassets in Resources */,
 				6368EBE31C45F303008649AF /* Main.storyboard in Resources */,
+				6329ACA81C4751C1009F958D /* 11.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +279,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6368EBE01C45F303008649AF /* ViewController.swift in Sources */,
+				6368EC0C1C463E8D008649AF /* AccViewController.swift in Sources */,
+				6329ACAA1C47589D009F958D /* TextInputView.swift in Sources */,
+				6329ACA61C473EBE009F958D /* BubbleLeftTableViewCell.swift in Sources */,
+				6368EC0E1C46411E008649AF /* ATrickyView.swift in Sources */,
+				6329ACA41C473DDE009F958D /* BubbleViewController.swift in Sources */,
 				6368EBDE1C45F303008649AF /* AppDelegate.swift in Sources */,
+				6329ACAC1C47807B009F958D /* AnimationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +512,7 @@
 				6368EC041C45F303008649AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6368EC051C45F303008649AF /* Build configuration list for PBXNativeTarget "CustomMessengerWorkoutTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +521,7 @@
 				6368EC071C45F303008649AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6368EC081C45F303008649AF /* Build configuration list for PBXNativeTarget "CustomMessengerWorkoutUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +530,7 @@
 				6368EC0A1C45F303008649AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
