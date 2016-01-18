@@ -85,6 +85,9 @@ class ATrickyView: UIView {
                     var frame = self.superview!.frame
                     frame.size.height -= barHeight
                     frame.origin.y += barHeight
+                    if UIApplication.sharedApplication().statusBarFrame.height == 40 {
+                        frame.origin.y -= 20
+                    }
                     print("check keyboard")
                     print("status bar rect")
                     print(UIApplication.sharedApplication().statusBarFrame)
