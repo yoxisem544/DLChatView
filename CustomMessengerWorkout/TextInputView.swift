@@ -23,17 +23,14 @@ class TextInputView: UIView {
     var currentTextViewContentHeight: CGFloat! = 38.0 {
         didSet {
             if currentTextViewContentHeight <= maxMessgeBarHeight {
-                currentMessageBarHeight = currentTextViewContentHeight + 6
+                currentMessageBarHeight = currentTextViewContentHeight + 8
                 // update the view
                 updateAlign()
                 // tell the delegate that i am updating
                 delegate?.textInputView(didUpdateFrame: self)
-            } else if currentTextViewContentHeight <= currentMessageBarHeight {
-                // shrink
-                currentMessageBarHeight = currentTextViewContentHeight + 6
-                updateAlign()
-                delegate?.textInputView(didUpdateFrame: self)
             }
+            print("current message bar h")
+            print(currentMessageBarHeight)
         }
     }
     var currentMessageBarHeight: CGFloat = 44.0
@@ -94,9 +91,9 @@ class TextInputView: UIView {
         UIView.animateWithDuration(0.2) { () -> Void in
             // first, get the offset that you are going to animate
             // this is the change of the self.frame.height size
-            let offset = self.frame.size.height - (self.currentTextViewContentHeight + 6)
+            let offset = self.frame.size.height - (self.currentTextViewContentHeight + 8)
             // expand the size of the frame
-            self.frame.size.height = self.currentTextViewContentHeight + 6
+            self.frame.size.height = self.currentTextViewContentHeight + 8
             // move frame position
             self.frame.origin.y += offset
             // move the btn y postion
