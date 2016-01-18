@@ -55,6 +55,12 @@ extension BubbleViewController : TextInputViewDelegate {
         if let kbRect = kbRect {
             x.frame.origin.y = kbRect.origin.y - textInputView.frame.height
             kbHeight =  UIScreen.mainScreen().bounds.height - kbRect.origin.y
+            // need to check status bar height
+            if UIApplication.sharedApplication().statusBarFrame.height == 40 {
+                x.frame.origin.y -= 20
+            }
+            print("=====uiscreen diff======")
+            print(UIScreen.mainScreen().bounds)
         }
     }
     func textInputView(didUpdateFrame textInputView: TextInputView) {

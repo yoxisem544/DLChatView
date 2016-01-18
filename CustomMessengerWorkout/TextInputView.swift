@@ -9,18 +9,23 @@
 import UIKit
 
 class TextInputView: UIView {
-
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+    // Drawing code
     }
     */
     
     var btn: UIButton!
     var textView: UITextView!
-    var barHeight: CGFloat! = 44.0
+    var currentTextViewContentHeight: CGFloat! = 38.0 {
+        didSet {
+            currentMessageBarHeight = currentTextViewContentHeight + 6
+        }
+    }
+    var currentMessageBarHeight: CGFloat = 44.0
     let initialBarHeight: CGFloat = 44.0
     
     var delegate: TextInputViewDelegate?
@@ -66,42 +71,43 @@ class TextInputView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func updateAlign() {
-    
+        
         UIView.animateWithDuration(0.2) { () -> Void in
-            let offset = self.frame.size.height - (self.barHeight + 6)
-            self.frame.size.height = self.barHeight + 6
+            // first, get the offset that you are going to animate
+            // this is the change of the self.frame.height size
+            let offset = self.frame.size.height - (self.currentTextViewContentHeight + 6)
+            // expand the size of the frame
+            self.frame.size.height = self.currentTextViewContentHeight + 6
             // move frame position
             self.frame.origin.y += offset
-            
+            // move the btn y postion
             self.btn.center.y = self.frame.height - self.initialBarHeight / 2
-            
-            self.textView.frame.size.height = self.barHeight
+            // expand the textview size
+            self.textView.frame.size.height = self.currentTextViewContentHeight
+            // move it
             self.textView.center.y = self.bounds.midY
         }
         
         if let a = textView.inputAccessoryView as? ATrickyView {
-            print("will update a view")
-            a.barHeight = barHeight
+            // tell keyboard that this bar height has changed
+            a.barHeight = self.currentMessageBarHeight
         }
     }
-
+    
 }
 
 extension TextInputView : UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
-//        print(textView.contentSize)
-//        print(textView.frame)
-        if textView.contentSize.height > barHeight {
-            barHeight = textView.contentSize.height
-            
+        if textView.contentSize.height > self.currentTextViewContentHeight {
+            self.currentTextViewContentHeight = textView.contentSize.height
             updateAlign()
-            delegate?.textInputView(didUpdateFrame: self)   
+            delegate?.textInputView(didUpdateFrame: self)
         }
     }
 }

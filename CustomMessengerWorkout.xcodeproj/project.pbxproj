@@ -60,7 +60,7 @@
 		6368EBFD1C45F303008649AF /* CustomMessengerWorkoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessengerWorkoutUITests.swift; sourceTree = "<group>"; };
 		6368EBFF1C45F303008649AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6368EC0B1C463E8D008649AF /* AccViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccViewController.swift; sourceTree = "<group>"; };
-		6368EC0D1C46411E008649AF /* ATrickyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATrickyView.swift; sourceTree = "<group>"; };
+		6368EC0D1C46411E008649AF /* ATrickyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATrickyView.swift; path = ../ATrickyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,6 @@
 		6368EBD11C45F303008649AF = {
 			isa = PBXGroup;
 			children = (
-				6368EC0D1C46411E008649AF /* ATrickyView.swift */,
 				6368EBDC1C45F303008649AF /* CustomMessengerWorkout */,
 				6368EBF11C45F303008649AF /* CustomMessengerWorkoutTests */,
 				6368EBFC1C45F303008649AF /* CustomMessengerWorkoutUITests */,
@@ -116,6 +115,7 @@
 				6368EBDF1C45F303008649AF /* ViewController.swift */,
 				6368EBE11C45F303008649AF /* Main.storyboard */,
 				6329ACAB1C47807B009F958D /* AnimationViewController.swift */,
+				6368EC0D1C46411E008649AF /* ATrickyView.swift */,
 				6329ACA91C47589D009F958D /* TextInputView.swift */,
 				6329ACA31C473DDE009F958D /* BubbleViewController.swift */,
 				6329ACA51C473EBE009F958D /* BubbleLeftTableViewCell.swift */,

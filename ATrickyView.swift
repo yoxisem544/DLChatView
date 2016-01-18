@@ -85,8 +85,15 @@ class ATrickyView: UIView {
                     var frame = self.superview!.frame
                     frame.size.height -= barHeight
                     frame.origin.y += barHeight
-                    print(self.superview)
+                    print("check keyboard")
+                    print("status bar rect")
+                    print(UIApplication.sharedApplication().statusBarFrame)
+                    print("main bounds")
+                    print(UIScreen.mainScreen().bounds)
+                    print("keyboard frame")
                     print(frame)
+                    print("atucal kb frame")
+                    print(self.superview!.frame)
                     if frame.origin.y <= UIScreen.mainScreen().bounds.height {
                         delegate?.aTrickyViewDelegate(currentKeyboardRect: frame)
                     }
