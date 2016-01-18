@@ -28,10 +28,10 @@ class ATrickyView: UIView {
     var delegate: ATrickyViewDelegate?
     var barHeight: CGFloat = 44 {
         didSet {
-            print("bar height update \(barHeight)")
+//            print("bar height update \(barHeight)")
             if self.constraints.count > 0 {
                 self.constraints[0].constant = barHeight
-                print(self.constraints)
+//                print(self.constraints)
             }
         }
     }
@@ -88,15 +88,15 @@ class ATrickyView: UIView {
                     if UIApplication.sharedApplication().statusBarFrame.height == 40 {
                         frame.origin.y -= 20
                     }
-                    print("check keyboard")
-                    print("status bar rect")
-                    print(UIApplication.sharedApplication().statusBarFrame)
-                    print("main bounds")
-                    print(UIScreen.mainScreen().bounds)
-                    print("keyboard frame")
-                    print(frame)
-                    print("atucal kb frame")
-                    print(self.superview!.frame)
+//                    print("check keyboard")
+//                    print("status bar rect")
+//                    print(UIApplication.sharedApplication().statusBarFrame)
+//                    print("main bounds")
+//                    print(UIScreen.mainScreen().bounds)
+//                    print("keyboard frame")
+//                    print(frame)
+//                    print("atucal kb frame")
+//                    print(self.superview!.frame)
                     if frame.origin.y <= UIScreen.mainScreen().bounds.height {
                         delegate?.aTrickyViewDelegate(currentKeyboardRect: frame)
                     }

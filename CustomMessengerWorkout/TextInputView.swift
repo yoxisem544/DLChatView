@@ -22,11 +22,24 @@ class TextInputView: UIView {
     var textView: UITextView!
     var currentTextViewContentHeight: CGFloat! = 38.0 {
         didSet {
-            currentMessageBarHeight = currentTextViewContentHeight + 6
+            if currentTextViewContentHeight <= maxMessgeBarHeight {
+                currentMessageBarHeight = currentTextViewContentHeight + 6
+                // update the view
+                updateAlign()
+                // tell the delegate that i am updating
+                delegate?.textInputView(didUpdateFrame: self)
+            } else if currentTextViewContentHeight <= currentMessageBarHeight {
+                // shrink
+                currentMessageBarHeight = currentTextViewContentHeight + 6
+                updateAlign()
+                delegate?.textInputView(didUpdateFrame: self)
+            }
         }
     }
     var currentMessageBarHeight: CGFloat = 44.0
     let initialBarHeight: CGFloat = 44.0
+    var maxMessgeBarHeight: CGFloat = 120.0
+    var minMessageBarHeight: CGFloat = 44.0
     
     var delegate: TextInputViewDelegate?
     
@@ -104,10 +117,11 @@ class TextInputView: UIView {
 
 extension TextInputView : UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
-        if textView.contentSize.height > self.currentTextViewContentHeight {
+        if textView.contentSize.height >= self.currentTextViewContentHeight {
             self.currentTextViewContentHeight = textView.contentSize.height
-            updateAlign()
-            delegate?.textInputView(didUpdateFrame: self)
+        } else {
+            // smaller size
+            self.currentTextViewContentHeight = textView.contentSize.height
         }
     }
 }
