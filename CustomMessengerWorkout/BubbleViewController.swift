@@ -67,6 +67,10 @@ extension BubbleViewController : TextInputViewDelegate {
     func textInputView(didUpdateFrame textInputView: TextInputView) {
         
     }
+    func textInputView(didClickedSendMessageButton message: String?) {
+        print("message sent!")
+        print(message)
+    }
 }
 
 extension BubbleViewController : UITableViewDelegate, UITableViewDataSource {
