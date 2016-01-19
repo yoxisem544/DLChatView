@@ -16,6 +16,7 @@ class DLMessagesViewController: UIViewController {
     
     struct Identifier {
         static let DLIncomingMessageBubbleIdentifier = "DLIncomingMessageBubble"
+        static let DLOutgoingMessageBubbleIdentifier = "DLOutgoingMessageBubble"
     }
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class DLMessagesViewController: UIViewController {
         bubbleTableView = UITableView(frame: UIScreen.mainScreen().bounds)
         self.view.addSubview(bubbleTableView)
         bubbleTableView.registerNib(UINib(nibName: Identifier.DLIncomingMessageBubbleIdentifier, bundle: nil), forCellReuseIdentifier: Identifier.DLIncomingMessageBubbleIdentifier)
+        bubbleTableView.registerNib(UINib(nibName: Identifier.DLOutgoingMessageBubbleIdentifier, bundle: nil), forCellReuseIdentifier: Identifier.DLOutgoingMessageBubbleIdentifier)
         
         bubbleTableView.delegate = self
         bubbleTableView.dataSource = self
@@ -68,8 +70,9 @@ extension DLMessagesViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Identifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
+//        let cell = tableView.dequeueReusableCellWithIdentifier(Identifier.DLOutgoingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLOutgoingMessageBubble
         
-        let s = ["BBC專訪11位候選人費文侯：僅4位水準之上其他都很爛 ...www.ettoday.net › 政治2014年11月20日 - 近日BBC針對這次九合一大選的11位候選人進行了專訪，其中朱立倫與陳菊並未受訪，BBC列出了5個問題請他們回答，而作家費文侯聽完他們的 ...BBC專訪6", "jaksjkas", "a"]
+        let s = ["BBC專訪11位候選", "jaksjkas", "a"]
         cell.textlabel.text = s[random()%3]
         let img = ["11.jpg", "60.jpg", "1.jpg"]
         cell.userImageView.image = UIImage(named: img[random()%3])

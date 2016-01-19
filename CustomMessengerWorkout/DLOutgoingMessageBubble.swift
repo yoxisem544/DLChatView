@@ -9,6 +9,8 @@
 import UIKit
 
 class DLOutgoingMessageBubble: UITableViewCell {
+    
+    @IBOutlet weak var textlabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
