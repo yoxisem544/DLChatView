@@ -8,11 +8,21 @@
 >**紀念一下 Swift (since 2015/1)寫了大概一年了！iOS也碰了一年半囉～～ since 2014/9**
 
 ## Demo
+### self sizing text input bar
+![image](DemoChat.gif)
+
+### interactive dismiss keyboard
+by implementing KVO on InputAccessoryView
+![image](DemoKeoboard.gif)
 
 ## feature
+- interactive dismiss
+- autosizing text input bar
+- self sizing bubble
 
-## setup
+## How to use it
 
+### Inherit
 首先你要先繼承 `DLMessagesViewController`
 
 ```swift
@@ -21,6 +31,7 @@ class YourViewController: DLMessagesViewController {
 }
 ```
 
+### DataSourse
 接下來要 implement 幾個方法
 
 首先需要指定你有幾筆訊息，要告訴`tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int` 你有幾筆訊息。
@@ -65,7 +76,19 @@ struct DLMessageControllerIdentifier {
 }
 ```
 
+### Delegate 
+目前只有一個送出訊息的delegate
+
+按下`傳送`按鈕後，將會把訊息清空，並觸發
+```swift
+DLMessagesViewControllerDidClickedMessageButton(withReturnMessage message: String?)
+```
+
+這個delegate
+
 ## subclassing
+- **UILabel** - 讓他有margin
+
 
 ## future work
 - able to rotate

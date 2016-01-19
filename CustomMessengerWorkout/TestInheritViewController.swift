@@ -66,7 +66,6 @@ extension TestInheritViewController : DLMessagesViewControllerDelegate {
         messages?.append(message)
         let indexPath = NSIndexPath(forRow: messages!.count - 1, inSection: 0)
         
-        bubbleTableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
-        bubbleTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
+        insertAndUpdateMessageView(atIndexPath: indexPath)
     }
 }
