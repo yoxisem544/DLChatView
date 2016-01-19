@@ -8,16 +8,16 @@
 
 import UIKit
 
+struct DLMessageControllerIdentifier {
+    static let DLIncomingMessageBubbleIdentifier = "DLIncomingMessageBubble"
+    static let DLOutgoingMessageBubbleIdentifier = "DLOutgoingMessageBubble"
+}
+
 class DLMessagesViewController: UIViewController {
     
     var bubbleTableView: UITableView!
     var keyboardTextInputView: TextInputView!
     var kbHeight: CGFloat!
-    
-    struct Identifier {
-        static let DLIncomingMessageBubbleIdentifier = "DLIncomingMessageBubble"
-        static let DLOutgoingMessageBubbleIdentifier = "DLOutgoingMessageBubble"
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,8 @@ class DLMessagesViewController: UIViewController {
         // Do any additional setup after loading the view.
         bubbleTableView = UITableView(frame: UIScreen.mainScreen().bounds)
         self.view.addSubview(bubbleTableView)
-        bubbleTableView.registerNib(UINib(nibName: Identifier.DLIncomingMessageBubbleIdentifier, bundle: nil), forCellReuseIdentifier: Identifier.DLIncomingMessageBubbleIdentifier)
-        bubbleTableView.registerNib(UINib(nibName: Identifier.DLOutgoingMessageBubbleIdentifier, bundle: nil), forCellReuseIdentifier: Identifier.DLOutgoingMessageBubbleIdentifier)
+        bubbleTableView.registerNib(UINib(nibName: DLMessageControllerIdentifier.DLIncomingMessageBubbleIdentifier, bundle: nil), forCellReuseIdentifier: DLMessageControllerIdentifier.DLIncomingMessageBubbleIdentifier)
+        bubbleTableView.registerNib(UINib(nibName: DLMessageControllerIdentifier.DLOutgoingMessageBubbleIdentifier, bundle: nil), forCellReuseIdentifier: DLMessageControllerIdentifier.DLOutgoingMessageBubbleIdentifier)
         
         bubbleTableView.delegate = self
         bubbleTableView.dataSource = self
@@ -71,13 +71,13 @@ extension DLMessagesViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Identifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
-//        let cell = tableView.dequeueReusableCellWithIdentifier(Identifier.DLOutgoingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLOutgoingMessageBubble
+        let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
+        //        let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLOutgoingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLOutgoingMessageBubble
         
-        let s = ["幹你媽的回去當心北市長啦", "不要擔心他1/16就回來當了","選後新民意既已讓民進黨全面執政，可提早進場一展執政抱負卻一再牽拖，民進黨真的做好執政準備了嗎？", "jaksjkas", "a"]
-        cell.textlabel.text = s[random()%3]
-        let img = ["11.jpg", "60.jpg", "1.jpg"]
-        cell.userImageView.image = UIImage(named: img[random()%3])
+        //        let s = ["幹你媽的回去當心北市長啦", "不要擔心他1/16就回來當了","選後新民意既已讓民進黨全面執政，可提早進場一展執政抱負卻一再牽拖，民進黨真的做好執政準備了嗎？", "jaksjkas", "a"]
+        //        cell.textlabel.text = s[random()%3]
+        //        let img = ["11.jpg", "60.jpg", "1.jpg"]
+        //        cell.userImageView.image = UIImage(named: img[random()%3])
         
         return cell
     }

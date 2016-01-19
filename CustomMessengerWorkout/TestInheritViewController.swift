@@ -9,14 +9,42 @@
 import UIKit
 
 class TestInheritViewController: DLMessagesViewController {
+    
+    var messages: [DLMessageData]?
+    var thisUserId = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        messages = []
+        for _ in 1...30 {
+            let userId = random()%2
+            print(userId)
+            let userImage = userId == 1 ? UIImage(named: "1.jpg") : nil
+            let m = DLMessageData(userId: "\(userId)", userImage: userImage, message: "吃唧唧")
+            messages?.append(m)
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if messages != nil {
+            return messages!.count
+        } else {
+            return 0
+        }
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if messages![indexPath.row].userId == "\(thisUserId)" {
+            let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLOutgoingMessageBubbleIdentifier) as! DLOutgoingMessageBubble
+            cell.textlabel.text = messages![indexPath.row].message
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(DLMessageControllerIdentifier.DLIncomingMessageBubbleIdentifier) as! DLIncomingMessageBubble
+            cell.textlabel.text = messages![indexPath.row].message
+            cell.userImageView.image = messages![indexPath.row].userImage
+            return cell
+        }
     }
 }
