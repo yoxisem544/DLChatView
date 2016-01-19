@@ -7,6 +7,15 @@
 
 >**紀念一下 Swift (since 2015/1)寫了大概一年了！iOS也碰了一年半囉～～ since 2014/9**
 
+## how to use it
+1. 可以下載整個專案，裡面包含Demo專案，以及`DLMessageView`
+2. 可以閱讀下面的[安裝法](https://github.com/yoxisem544/DLChatView#how-to-use-it)
+
+clone it!
+
+`git clone https://github.com/yoxisem544/DLChatView`  
+
+
 ## Demo
 ### self sizing text input bar
 ![image](DemoChat.gif)
@@ -21,7 +30,7 @@ by implementing KVO on InputAccessoryView
 - autosizing text input bar
 - self sizing bubble
 
-## How to use it
+## setup
 
 ### Inherit
 首先你要先繼承 `DLMessagesViewController`
