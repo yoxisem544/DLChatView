@@ -1,5 +1,5 @@
 //
-//  BubbleViewController.swift
+//  DLMessagesViewController.swift
 //  CustomMessengerWorkout
 //
 //  Created by David on 2016/1/14.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class BubbleViewController: UIViewController {
+class DLMessagesViewController: UIViewController {
     
     @IBOutlet weak var bubbleTableView: UITableView!
-    var x: TextInputView!
+    var keyboardTextInputView: TextInputView!
     var kbHeight: CGFloat!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         bubbleTableView.delegate = self
         bubbleTableView.dataSource = self
@@ -26,42 +26,18 @@ class BubbleViewController: UIViewController {
         
         bubbleTableView.keyboardDismissMode = .Interactive
         
-        x = TextInputView()
-        x.frame.origin.y = 100
-        x.delegate = self
-        self.view.addSubview(x)
+        keyboardTextInputView = TextInputView()
+        keyboardTextInputView.frame.origin.y = UIScreen.mainScreen().bounds.maxY - keyboardTextInputView.bounds.height
+        keyboardTextInputView.delegate = self
+        self.view.addSubview(keyboardTextInputView)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-extension BubbleViewController : TextInputViewDelegate {
+extension DLMessagesViewController : TextInputViewDelegate {
     func textInputView(didUpdateKeyboardFrame kbRect: CGRect?, textInputView: TextInputView) {
         if let kbRect = kbRect {
-            print(kbRect)
-            x.frame.origin.y = kbRect.origin.y - textInputView.frame.height
+            keyboardTextInputView.frame.origin.y = kbRect.origin.y - textInputView.frame.height
             kbHeight =  UIScreen.mainScreen().bounds.height - kbRect.origin.y
-            // need to check status bar height
-            if UIApplication.sharedApplication().statusBarFrame.height == 40 {
-//                x.frame.origin.y -= 20
-            }
-            print("=====uiscreen diff======")
-            print(UIScreen.mainScreen().bounds)
         }
     }
     func textInputView(didUpdateFrame textInputView: TextInputView) {
@@ -73,13 +49,13 @@ extension BubbleViewController : TextInputViewDelegate {
     }
 }
 
-extension BubbleViewController : UITableViewDelegate, UITableViewDataSource {
+extension DLMessagesViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

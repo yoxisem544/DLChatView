@@ -18,10 +18,29 @@ class TextInputView: UIView {
     }
     */
     
-    var sendMessageButton: UIButton!
-    var messageTextView: UITextView!
-    let messageTextViewPlaceholder: String = "來點訊息吧..."
-    var currentMessageTextViewContentHeight: CGFloat! = 38.0 {
+    private var sendMessageButton: UIButton!
+    private let sendMessageButtonSize: CGSize = CGSize(width: 30, height: 30)
+    private var messageTextView: UITextView!
+    var messageTextViewPlaceholder: String = "來點訊息吧..." {
+        didSet {
+            if messageTextView.text.isEmpty {
+                if messageTextView.textColor == UIColor.grayColor() {
+                    messageTextView.text = messageTextViewPlaceholder
+                }
+            }
+        }
+    }
+    private let leftInset: CGFloat = 8
+    private var messageTextViewWidth: CGFloat {
+        get {
+            if sendMessageButton.hidden {
+                return UIScreen.mainScreen().bounds.width - 2 * leftInset
+            } else {
+                return UIScreen.mainScreen().bounds.width - 2 * leftInset - sendMessageButton.bounds.width
+            }
+        }
+    }
+    private var currentMessageTextViewContentHeight: CGFloat! = 36.0 {
         didSet {
             if currentMessageTextViewContentHeight <= maxMessgeBarHeight {
                 currentMessageBarHeight = currentMessageTextViewContentHeight + 8
@@ -34,22 +53,23 @@ class TextInputView: UIView {
             print(currentMessageBarHeight)
         }
     }
-    let initialMessageTextViewHeight: CGFloat = 38.0
-    var currentMessageBarHeight: CGFloat = 44.0
-    let initialBarHeight: CGFloat = 44.0
+    private let initialMessageTextViewHeight: CGFloat = 36.0
+    private var currentMessageBarHeight: CGFloat = 44.0
+    private let initialBarHeight: CGFloat = 44.0
     var maxMessgeBarHeight: CGFloat = 120.0
-    var minMessageBarHeight: CGFloat = 44.0
+    private var minMessageBarHeight: CGFloat = 44.0
     
     var delegate: TextInputViewDelegate?
     
     convenience init() {
         self.init(frame: CGRectZero)
         self.frame = UIScreen.mainScreen().bounds
-        self.frame.size.height = 44
+        self.frame.size.height = initialBarHeight
         self.backgroundColor = UIColor.whiteColor()
         
         sendMessageButton = UIButton(type: UIButtonType.System)
-        sendMessageButton.frame = CGRectMake(0, 0, 30, 30)
+        sendMessageButton.frame = CGRectZero
+        sendMessageButton.frame.size = sendMessageButtonSize
         sendMessageButton.setTitle("HI", forState: UIControlState.Normal)
         sendMessageButton.titleLabel?.font = UIFont.systemFontOfSize(18)
 //        sendMessageButton.backgroundColor = UIColor.grayColor()
@@ -57,11 +77,10 @@ class TextInputView: UIView {
         self.addSubview(sendMessageButton)
         
         messageTextView = UITextView(frame: self.frame)
-        let leftInset: CGFloat = 8
-        messageTextView.frame.size.width -= leftInset
+        messageTextView.frame.size.width -= 2 * leftInset
         messageTextView.frame.origin.x += leftInset
-        messageTextView.frame.size.width -= 30
-        messageTextView.frame.size.height = 38
+        messageTextView.frame.size.width -= sendMessageButtonSize.width
+        messageTextView.frame.size.height = initialMessageTextViewHeight
         messageTextView.center.y = self.bounds.midY
         messageTextView.textAlignment = .Natural
         messageTextView.bounces = false
@@ -75,11 +94,11 @@ class TextInputView: UIView {
         print(messageTextView.contentSize)
         messageTextView.textColor = UIColor.lightGrayColor()
         messageTextView.text = messageTextViewPlaceholder
-//        messageTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
-//        messageTextView.layer.borderWidth = 1.0
+        messageTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        messageTextView.layer.borderWidth = 1.0
         self.addSubview(messageTextView)
         
-        sendMessageButton.frame.origin.x = messageTextView.bounds.maxX
+        sendMessageButton.frame.origin.x = messageTextView.bounds.maxX + leftInset
         sendMessageButton.center.y = messageTextView.center.y
         
         let a = ATrickyView()
@@ -94,15 +113,15 @@ class TextInputView: UIView {
         self.addSubview(orangeBarView)
     }
     
-    override init(frame: CGRect) {
+    private override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    internal required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateAlign() {
+    private func updateAlign() {
         
         UIView.animateWithDuration(0.2) { () -> Void in
             // first, get the offset that you are going to animate
@@ -126,13 +145,13 @@ class TextInputView: UIView {
         }
     }
     
-    func sendMessageButtonClicked() {
+    internal func sendMessageButtonClicked() {
         delegate?.textInputView(didClickedSendMessageButton: self.messageTextView.text)
         self.messageTextView.text = ""
         self.currentMessageTextViewContentHeight = initialMessageTextViewHeight
     }
     
-    func hideSendMessageButton() {
+    private func hideSendMessageButton() {
         
         let t1 = CGAffineTransformMakeScale(0.1, 1)
         let t2 = CGAffineTransformMakeTranslation(self.sendMessageButton.bounds.midX, 0)
@@ -140,7 +159,7 @@ class TextInputView: UIView {
 
         UIView.animateWithDuration(0.2, delay: 0, options: [], animations: { () -> Void in
             self.sendMessageButton.transform = trans
-            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width
+            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset
             }) { (finished) -> Void in
                 if finished {
                     self.sendMessageButton.hidden = true
@@ -149,12 +168,12 @@ class TextInputView: UIView {
         }
     }
     
-    func showSendMessageButton() {
+    private func showSendMessageButton() {
         self.sendMessageButton.hidden = false
         UIView.animateWithDuration(0.15, delay: 0, options: [], animations: { () -> Void in
 //            self.sendMessageButton.transform = CGAffineTransformMakeScale(1, 1)
             self.sendMessageButton.transform = CGAffineTransformIdentity
-            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - self.sendMessageButton.frame.width
+            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset - self.sendMessageButton.bounds.width
             }, completion: nil)
     }
 }
