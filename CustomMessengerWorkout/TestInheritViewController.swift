@@ -15,16 +15,23 @@ class TestInheritViewController: DLMessagesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        delegate = self
 
         // Do any additional setup after loading the view.
         messages = []
         for _ in 1...30 {
             let userId = random()%2
-            print(userId)
+//            print(userId)
             let userImage = userId == 1 ? UIImage(named: "1.jpg") : nil
             let m = DLMessageData(userId: "\(userId)", userImage: userImage, message: "吃唧唧")
             messages?.append(m)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollToButtom(animated: false)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,5 +53,11 @@ class TestInheritViewController: DLMessagesViewController {
             cell.userImageView.image = messages![indexPath.row].userImage
             return cell
         }
+    }
+}
+
+extension TestInheritViewController : DLMessagesViewControllerDelegate {
+    func DLMessagesViewControllerDidClickedMessageButton(withReturnMessage message: String?) {
+        print("message \(message) sent!")
     }
 }

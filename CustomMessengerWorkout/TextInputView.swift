@@ -49,8 +49,8 @@ class TextInputView: UIView {
                 // tell the delegate that i am updating
                 delegate?.textInputView(didUpdateFrame: self)
             }
-            print("current message bar h")
-            print(currentMessageBarHeight)
+//            print("current message bar h")
+//            print(currentMessageBarHeight)
         }
     }
     private let initialMessageTextViewHeight: CGFloat = 36.0
@@ -84,14 +84,14 @@ class TextInputView: UIView {
         messageTextView.center.y = self.bounds.midY
         messageTextView.textAlignment = .Natural
         messageTextView.bounces = false
-        print(messageTextView.contentSize)
-        print(messageTextView.frame)
+//        print(messageTextView.contentSize)
+//        print(messageTextView.frame)
         messageTextView.backgroundColor = UIColor.clearColor()
 //        messageTextView.layer.borderWidth = 2.0
 //        messageTextView.layer.borderColor = UIColor.blackColor().CGColor
         messageTextView.font = UIFont.systemFontOfSize(16)
         messageTextView.delegate = self
-        print(messageTextView.contentSize)
+//        print(messageTextView.contentSize)
         messageTextView.textColor = UIColor.lightGrayColor()
         messageTextView.text = messageTextViewPlaceholder
         messageTextView.layer.borderColor = UIColor.lightGrayColor().CGColor

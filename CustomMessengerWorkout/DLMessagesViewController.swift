@@ -13,11 +13,17 @@ struct DLMessageControllerIdentifier {
     static let DLOutgoingMessageBubbleIdentifier = "DLOutgoingMessageBubble"
 }
 
+protocol DLMessagesViewControllerDelegate {
+    func DLMessagesViewControllerDidClickedMessageButton(withReturnMessage message: String?)
+}
+
 class DLMessagesViewController: UIViewController {
     
     var bubbleTableView: UITableView!
     var keyboardTextInputView: TextInputView!
-    var kbHeight: CGFloat!
+    var kbHeight: CGFloat! = 0.0
+    
+    var delegate: DLMessagesViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +49,12 @@ class DLMessagesViewController: UIViewController {
         keyboardTextInputView.delegate = self
         self.view.addSubview(keyboardTextInputView)
     }
+    
+    func scrollToButtom(animated animated: Bool) {
+        let numbers = bubbleTableView.numberOfRowsInSection(0)
+        let indexPath = NSIndexPath(forRow: numbers - 1, inSection: 0)
+        bubbleTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+    }
 }
 
 extension DLMessagesViewController : TextInputViewDelegate {
@@ -50,14 +62,17 @@ extension DLMessagesViewController : TextInputViewDelegate {
         if let kbRect = kbRect {
             keyboardTextInputView.frame.origin.y = kbRect.origin.y - textInputView.frame.height
             kbHeight =  UIScreen.mainScreen().bounds.height - kbRect.origin.y
+            // adjust inset
+            let bottomInset = UIScreen.mainScreen().bounds.height - keyboardTextInputView.frame.origin.y
+            bubbleTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+            scrollToButtom(animated: true)
         }
     }
     func textInputView(didUpdateFrame textInputView: TextInputView) {
         
     }
     func textInputView(didClickedSendMessageButton message: String?) {
-        print("message sent!")
-        print(message)
+        delegate?.DLMessagesViewControllerDidClickedMessageButton(withReturnMessage: message)
     }
 }
 

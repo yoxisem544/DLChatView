@@ -19,7 +19,7 @@ class DLOutgoingMessageBubble: UITableViewCell {
         textlabel.layer.borderColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9).CGColor
         textlabel.layer.borderWidth = 1.0
         //        textlabel.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        print(textlabel.frame)
+//        print(textlabel.frame)
         textlabel.font = UIFont.systemFontOfSize(16.0)
         textlabel.backgroundColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9)
         textlabel.textColor = UIColor.whiteColor()

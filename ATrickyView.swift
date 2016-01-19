@@ -48,7 +48,7 @@ class ATrickyView: UIView {
 //        self.layer.borderColor = UIColor.greenColor().CGColor
 //        self.layer.borderWidth = 3.0
         self.userInteractionEnabled = false
-        print("acc view setup with height \(barHeight)")
+//        print("acc view setup with height \(barHeight)")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,7 +66,7 @@ class ATrickyView: UIView {
         newSuperview?.addObserver(self, forKeyPath: "center", options: NSKeyValueObservingOptions.init(rawValue: 0), context: pointer)
         isObserverAdded = true
         
-        print(newSuperview)
+//        print(newSuperview)
         super.willMoveToSuperview(newSuperview)
     }
     
@@ -74,7 +74,7 @@ class ATrickyView: UIView {
         if isObserverAdded {
             self.superview?.removeObserver(self, forKeyPath: "frame", context: pointer)
             self.superview?.removeObserver(self, forKeyPath: "center", context: pointer)
-            print("deinit")
+//            print("deinit")
         }
     }
     
