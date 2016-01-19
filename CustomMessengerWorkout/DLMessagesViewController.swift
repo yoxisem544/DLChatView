@@ -61,9 +61,9 @@ class DLMessagesViewController: UIViewController {
     func finishSentMessage() {
         let number = bubbleTableView.numberOfRowsInSection(0) - 1
         let indexPath = NSIndexPath(forRow: number, inSection: 0)
-        print(bubbleTableView.contentSize.height)
-        print(bubbleTableView.contentSize)
-        bubbleTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.None, animated: true)
+//        print(bubbleTableView.contentSize.height)
+//        print(bubbleTableView.contentSize)
+        bubbleTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
     
     func logContentSize() {
@@ -85,7 +85,7 @@ extension DLMessagesViewController : TextInputViewDelegate {
             // adjust inset
             let bottomInset = UIScreen.mainScreen().bounds.height - keyboardTextInputView.frame.origin.y
             bubbleTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
-            scrollToButtom(animated: true)
+            scrollToButtom(animated: false)
         }
     }
     func textInputView(didUpdateFrame textInputView: TextInputView) {

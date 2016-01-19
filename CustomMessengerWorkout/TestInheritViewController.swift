@@ -59,11 +59,12 @@ class TestInheritViewController: DLMessagesViewController {
 extension TestInheritViewController : DLMessagesViewControllerDelegate {
     func DLMessagesViewControllerDidClickedMessageButton(withReturnMessage message: String?) {
         print("message \(message) sent!")
-        let message = DLMessageData(userId: "\(thisUserId)", userImage: nil, message: message)
+        print("bubbleTableView.contentSize.height \(bubbleTableView.contentSize.height)")
+        let message = DLMessageData(userId: "\(random()%2)", userImage: nil, message: message)
         messages?.append(message)
         let indexPath = NSIndexPath(forRow: messages!.count - 1, inSection: 0)
         
-        bubbleTableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-        finishSentMessage()
+        bubbleTableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
+        bubbleTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
     }
 }

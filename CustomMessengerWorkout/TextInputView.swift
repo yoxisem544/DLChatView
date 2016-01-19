@@ -146,35 +146,44 @@ class TextInputView: UIView {
     }
     
     internal func sendMessageButtonClicked() {
-        delegate?.textInputView(didClickedSendMessageButton: self.messageTextView.text)
-        self.messageTextView.text = ""
-        self.currentMessageTextViewContentHeight = initialMessageTextViewHeight
+        if self.messageTextView.textColor != UIColor.lightGrayColor() {
+            let trimmedString: NSString = messageTextView.text
+            delegate?.textInputView(didClickedSendMessageButton: trimmedString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))
+            self.messageTextView.text = ""
+            self.currentMessageTextViewContentHeight = initialMessageTextViewHeight
+        }
     }
     
     private func hideSendMessageButton() {
         
-        let t1 = CGAffineTransformMakeScale(0.1, 1)
-        let t2 = CGAffineTransformMakeTranslation(self.sendMessageButton.bounds.midX, 0)
-        let trans = CGAffineTransformConcat(t1, t2)
-
-        UIView.animateWithDuration(0.2, delay: 0, options: [], animations: { () -> Void in
-            self.sendMessageButton.transform = trans
-            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset
-            }) { (finished) -> Void in
-                if finished {
-                    self.sendMessageButton.hidden = true
-                    
-                }
-        }
+//        let t1 = CGAffineTransformMakeScale(0.1, 1)
+//        let t2 = CGAffineTransformMakeTranslation(self.sendMessageButton.bounds.midX, 0)
+//        let trans = CGAffineTransformConcat(t1, t2)
+//
+//        UIView.animateWithDuration(0.2, delay: 0, options: [], animations: { () -> Void in
+//            self.sendMessageButton.transform = trans
+//            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset
+//            }) { (finished) -> Void in
+//                if finished {
+//                    self.sendMessageButton.hidden = true
+//                    
+//                }
+//        }
+        
+        self.sendMessageButton.enabled = false
+        self.sendMessageButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
     }
     
     private func showSendMessageButton() {
-        self.sendMessageButton.hidden = false
-        UIView.animateWithDuration(0.15, delay: 0, options: [], animations: { () -> Void in
-//            self.sendMessageButton.transform = CGAffineTransformMakeScale(1, 1)
-            self.sendMessageButton.transform = CGAffineTransformIdentity
-            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset - self.sendMessageButton.bounds.width
-            }, completion: nil)
+//        self.sendMessageButton.hidden = false
+//        UIView.animateWithDuration(0.15, delay: 0, options: [], animations: { () -> Void in
+////            self.sendMessageButton.transform = CGAffineTransformMakeScale(1, 1)
+//            self.sendMessageButton.transform = CGAffineTransformIdentity
+//            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset - self.sendMessageButton.bounds.width
+//            }, completion: nil)
+        
+        self.sendMessageButton.enabled = true
+        self.sendMessageButton.setTitleColor(self.sendMessageButton.tintColor, forState: UIControlState.Normal)
     }
 }
 
@@ -187,7 +196,8 @@ extension TextInputView : UITextViewDelegate {
             self.currentMessageTextViewContentHeight = messageTextView.contentSize.height
         }
         // detect text change
-        if messageTextView.text.isEmpty {
+        
+        if messageTextView.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {
             hideSendMessageButton()
         } else {
             showSendMessageButton()
