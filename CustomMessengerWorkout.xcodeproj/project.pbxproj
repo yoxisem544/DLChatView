@@ -12,6 +12,12 @@
 		6329ACA81C4751C1009F958D /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6329ACA71C4751C1009F958D /* 11.jpg */; };
 		6329ACAA1C47589D009F958D /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329ACA91C47589D009F958D /* TextInputView.swift */; };
 		6329ACAC1C47807B009F958D /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329ACAB1C47807B009F958D /* AnimationViewController.swift */; };
+		632E0A5C1C4DFECE0063B941 /* DLIncomingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632E0A5B1C4DFECE0063B941 /* DLIncomingMessageBubble.swift */; };
+		632E0A5E1C4DFEE00063B941 /* DLIncomingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632E0A5D1C4DFEE00063B941 /* DLIncomingMessageBubble.xib */; };
+		632E0A601C4E0DD80063B941 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 632E0A5F1C4E0DD80063B941 /* 1.jpg */; };
+		632E0A621C4E0DE20063B941 /* 60.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 632E0A611C4E0DE20063B941 /* 60.jpg */; };
+		632E0A641C4E0FA30063B941 /* DLOutgoingMessageBubble.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632E0A631C4E0FA30063B941 /* DLOutgoingMessageBubble.xib */; };
+		632E0A661C4E0FB50063B941 /* DLOutgoingMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632E0A651C4E0FB50063B941 /* DLOutgoingMessageBubble.swift */; };
 		6368EBDE1C45F303008649AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368EBDD1C45F303008649AF /* AppDelegate.swift */; };
 		6368EBE01C45F303008649AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368EBDF1C45F303008649AF /* ViewController.swift */; };
 		6368EBE31C45F303008649AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6368EBE11C45F303008649AF /* Main.storyboard */; };
@@ -47,6 +53,12 @@
 		6329ACA71C4751C1009F958D /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
 		6329ACA91C47589D009F958D /* TextInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		6329ACAB1C47807B009F958D /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
+		632E0A5B1C4DFECE0063B941 /* DLIncomingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLIncomingMessageBubble.swift; sourceTree = "<group>"; };
+		632E0A5D1C4DFEE00063B941 /* DLIncomingMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLIncomingMessageBubble.xib; sourceTree = "<group>"; };
+		632E0A5F1C4E0DD80063B941 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		632E0A611C4E0DE20063B941 /* 60.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 60.jpg; sourceTree = "<group>"; };
+		632E0A631C4E0FA30063B941 /* DLOutgoingMessageBubble.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLOutgoingMessageBubble.xib; sourceTree = "<group>"; };
+		632E0A651C4E0FB50063B941 /* DLOutgoingMessageBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLOutgoingMessageBubble.swift; sourceTree = "<group>"; };
 		6368EBDA1C45F303008649AF /* CustomMessengerWorkout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomMessengerWorkout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6368EBDD1C45F303008649AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6368EBDF1C45F303008649AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,9 +133,15 @@
 				6329ACA91C47589D009F958D /* TextInputView.swift */,
 				6329ACA31C473DDE009F958D /* DLMessagesViewController.swift */,
 				63CDC4451C4DEE69005B5D3D /* TestInheritViewController.swift */,
+				632E0A5B1C4DFECE0063B941 /* DLIncomingMessageBubble.swift */,
+				632E0A5D1C4DFEE00063B941 /* DLIncomingMessageBubble.xib */,
+				632E0A651C4E0FB50063B941 /* DLOutgoingMessageBubble.swift */,
+				632E0A631C4E0FA30063B941 /* DLOutgoingMessageBubble.xib */,
 				6329ACA51C473EBE009F958D /* BubbleLeftTableViewCell.swift */,
 				6368EC0B1C463E8D008649AF /* AccViewController.swift */,
 				6329ACA71C4751C1009F958D /* 11.jpg */,
+				632E0A611C4E0DE20063B941 /* 60.jpg */,
+				632E0A5F1C4E0DD80063B941 /* 1.jpg */,
 				6368EBE41C45F303008649AF /* Assets.xcassets */,
 				6368EBE61C45F303008649AF /* LaunchScreen.storyboard */,
 				6368EBE91C45F303008649AF /* Info.plist */,
@@ -254,9 +272,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6368EBE81C45F303008649AF /* LaunchScreen.storyboard in Resources */,
+				632E0A641C4E0FA30063B941 /* DLOutgoingMessageBubble.xib in Resources */,
 				6368EBE51C45F303008649AF /* Assets.xcassets in Resources */,
 				6368EBE31C45F303008649AF /* Main.storyboard in Resources */,
+				632E0A621C4E0DE20063B941 /* 60.jpg in Resources */,
+				632E0A601C4E0DD80063B941 /* 1.jpg in Resources */,
 				6329ACA81C4751C1009F958D /* 11.jpg in Resources */,
+				632E0A5E1C4DFEE00063B941 /* DLIncomingMessageBubble.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,12 +304,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6368EBE01C45F303008649AF /* ViewController.swift in Sources */,
+				632E0A5C1C4DFECE0063B941 /* DLIncomingMessageBubble.swift in Sources */,
 				6368EC0C1C463E8D008649AF /* AccViewController.swift in Sources */,
 				6329ACAA1C47589D009F958D /* TextInputView.swift in Sources */,
 				6329ACA61C473EBE009F958D /* BubbleLeftTableViewCell.swift in Sources */,
 				6368EC0E1C46411E008649AF /* ATrickyView.swift in Sources */,
 				6329ACA41C473DDE009F958D /* DLMessagesViewController.swift in Sources */,
 				6368EBDE1C45F303008649AF /* AppDelegate.swift in Sources */,
+				632E0A661C4E0FB50063B941 /* DLOutgoingMessageBubble.swift in Sources */,
 				63CDC4461C4DEE69005B5D3D /* TestInheritViewController.swift in Sources */,
 				6329ACAC1C47807B009F958D /* AnimationViewController.swift in Sources */,
 			);

@@ -14,12 +14,17 @@ class DLMessagesViewController: UIViewController {
     var keyboardTextInputView: TextInputView!
     var kbHeight: CGFloat!
     
+    struct Identifier {
+        static let DLIncomingMessageBubbleIdentifier = "DLIncomingMessageBubble"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         bubbleTableView = UITableView(frame: UIScreen.mainScreen().bounds)
         self.view.addSubview(bubbleTableView)
+        bubbleTableView.registerNib(UINib(nibName: Identifier.DLIncomingMessageBubbleIdentifier, bundle: nil), forCellReuseIdentifier: Identifier.DLIncomingMessageBubbleIdentifier)
         
         bubbleTableView.delegate = self
         bubbleTableView.dataSource = self
@@ -62,10 +67,12 @@ extension DLMessagesViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("rid", forIndexPath: indexPath) as! BubbleLeftTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Identifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
         
-        let s = ["BBC專訪11位候選人費文侯：僅4位水準之上其他都很爛 ...www.ettoday.net › 政治2014年11月20日 - 近日BBC針對這次九合一大選的11位候選人進行了專訪，其中朱立倫與陳菊並未受訪，BBC列出了5個問題請他們回答，而作家費文侯聽完他們的 ...BBC專訪6都候選人作家費文侯 - 自由時報電子報news.ltn.com.tw/news/politics/breakingnews/11615432014年11月19日 - BBC中文網針對6都市長民調前2名的候選人，台北市另外多加了馮光遠，做出一系列的專訪，總共有5個題目，時間限定2分鐘，作家費文侯聽完訪問 ...費文侯– 新公民議會newcongress.tw/?author=40費文侯作品精選. 要蔡英文解決問題，先給她夠多立委(2016-01-08) 團結老中青，教訓撕裂世代的國民黨(2016-01-04) 從王如玄的同理心，想想洪慈庸的 ...費文| Facebookhttps://zh-tw.facebook.com/Li.Ying.Nuan費文已經註冊了Facebook。加入Facebook 來聯絡費文及更多你可能認識的朋友。Facebook 讓人們盡情分享，將這個世界變得更開闊、聯繫更", "jaksjkas", "a"]
-        cell.incomingtv.text = s[random()%3]
+        let s = ["BBC專訪11位候選人費文侯：僅4位水準之上其他都很爛 ...www.ettoday.net › 政治2014年11月20日 - 近日BBC針對這次九合一大選的11位候選人進行了專訪，其中朱立倫與陳菊並未受訪，BBC列出了5個問題請他們回答，而作家費文侯聽完他們的 ...BBC專訪6", "jaksjkas", "a"]
+        cell.textlabel.text = s[random()%3]
+        let img = ["11.jpg", "60.jpg", "1.jpg"]
+        cell.userImageView.image = UIImage(named: img[random()%3])
         
         return cell
     }
