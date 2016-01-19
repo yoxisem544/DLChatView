@@ -22,6 +22,7 @@ class DLMessagesViewController: UIViewController {
     var bubbleTableView: UITableView!
     var keyboardTextInputView: TextInputView!
     var kbHeight: CGFloat! = 0.0
+    var keyboardAndMessageGap: CGFloat = 8.0
     
     var delegate: DLMessagesViewControllerDelegate?
     
@@ -48,6 +49,9 @@ class DLMessagesViewController: UIViewController {
         keyboardTextInputView.frame.origin.y = UIScreen.mainScreen().bounds.maxY - keyboardTextInputView.bounds.height
         keyboardTextInputView.delegate = self
         self.view.addSubview(keyboardTextInputView)
+        
+        // adjust inset
+        bubbleTableView.contentInset.bottom = keyboardAndMessageGap + keyboardTextInputView.bounds.height
     }
     
     func scrollToButtom(animated animated: Bool) {
@@ -83,7 +87,7 @@ extension DLMessagesViewController : TextInputViewDelegate {
             keyboardTextInputView.frame.origin.y = kbRect.origin.y - textInputView.frame.height
             kbHeight =  UIScreen.mainScreen().bounds.height - kbRect.origin.y
             // adjust inset
-            let bottomInset = UIScreen.mainScreen().bounds.height - keyboardTextInputView.frame.origin.y
+            let bottomInset = UIScreen.mainScreen().bounds.height - keyboardTextInputView.frame.origin.y + keyboardAndMessageGap
             bubbleTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
             scrollToButtom(animated: false)
         }

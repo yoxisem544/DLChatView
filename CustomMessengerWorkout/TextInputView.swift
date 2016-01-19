@@ -116,7 +116,7 @@ class TextInputView: UIView {
         // make self view has a orange bar on top of it
         let orangeBarView = UIView(frame: UIScreen.mainScreen().bounds)
         orangeBarView.frame.size.height = 1
-        orangeBarView.backgroundColor = UIColor.orangeColor()
+        orangeBarView.backgroundColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9)
         self.addSubview(orangeBarView)
         
         disableSendMessageButton()

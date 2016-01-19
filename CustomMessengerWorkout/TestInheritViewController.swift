@@ -60,7 +60,9 @@ extension TestInheritViewController : DLMessagesViewControllerDelegate {
     func DLMessagesViewControllerDidClickedMessageButton(withReturnMessage message: String?) {
         print("message \(message) sent!")
         print("bubbleTableView.contentSize.height \(bubbleTableView.contentSize.height)")
-        let message = DLMessageData(userId: "\(random()%2)", userImage: nil, message: message)
+        let userId = random()%2
+        let img = userId == 1 ? UIImage(named: "1.jpg") : nil
+        let message = DLMessageData(userId: "\(userId)", userImage: img, message: message)
         messages?.append(message)
         let indexPath = NSIndexPath(forRow: messages!.count - 1, inSection: 0)
         
