@@ -19,7 +19,7 @@ class TextInputView: UIView {
     */
     
     private var sendMessageButton: UIButton!
-    private let sendMessageButtonSize: CGSize = CGSize(width: 30, height: 30)
+    private let sendMessageButtonSize: CGSize = CGSize(width: 61, height: 30)
     private var messageTextView: UITextView!
     var messageTextViewPlaceholder: String = "來點訊息吧..." {
         didSet {
@@ -31,6 +31,7 @@ class TextInputView: UIView {
         }
     }
     private let leftInset: CGFloat = 8
+    private let sendButtonAndMessageTextViewGap: CGFloat = 4.0
     private var messageTextViewWidth: CGFloat {
         get {
             if sendMessageButton.hidden {
@@ -49,8 +50,8 @@ class TextInputView: UIView {
                 // tell the delegate that i am updating
                 delegate?.textInputView(didUpdateFrame: self)
             }
-//            print("current message bar h")
-//            print(currentMessageBarHeight)
+            //            print("current message bar h")
+            //            print(currentMessageBarHeight)
         }
     }
     private let initialMessageTextViewHeight: CGFloat = 36.0
@@ -70,35 +71,41 @@ class TextInputView: UIView {
         sendMessageButton = UIButton(type: UIButtonType.System)
         sendMessageButton.frame = CGRectZero
         sendMessageButton.frame.size = sendMessageButtonSize
-        sendMessageButton.setTitle("HI", forState: UIControlState.Normal)
+        sendMessageButton.setTitle("傳送", forState: UIControlState.Normal)
         sendMessageButton.titleLabel?.font = UIFont.systemFontOfSize(18)
-//        sendMessageButton.backgroundColor = UIColor.grayColor()
+        sendMessageButton.contentHorizontalAlignment = .Center
+        sendMessageButton.contentVerticalAlignment = .Center
+        sendMessageButton.tintColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9)
+        sendMessageButton.layer.cornerRadius = 2.0
+        sendMessageButton.layer.borderColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9).CGColor
+        sendMessageButton.layer.borderWidth = 1.0
+//        sendMessageButton.backgroundColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9)
         sendMessageButton.addTarget(self, action: "sendMessageButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(sendMessageButton)
         
         messageTextView = UITextView(frame: self.frame)
-        messageTextView.frame.size.width -= 2 * leftInset
+        messageTextView.frame.size.width -= 2 * leftInset + sendButtonAndMessageTextViewGap
         messageTextView.frame.origin.x += leftInset
         messageTextView.frame.size.width -= sendMessageButtonSize.width
         messageTextView.frame.size.height = initialMessageTextViewHeight
         messageTextView.center.y = self.bounds.midY
         messageTextView.textAlignment = .Natural
         messageTextView.bounces = false
-//        print(messageTextView.contentSize)
-//        print(messageTextView.frame)
+        //        print(messageTextView.contentSize)
+        //        print(messageTextView.frame)
         messageTextView.backgroundColor = UIColor.clearColor()
-//        messageTextView.layer.borderWidth = 2.0
-//        messageTextView.layer.borderColor = UIColor.blackColor().CGColor
+        //        messageTextView.layer.borderWidth = 2.0
+        //        messageTextView.layer.borderColor = UIColor.blackColor().CGColor
         messageTextView.font = UIFont.systemFontOfSize(16)
         messageTextView.delegate = self
-//        print(messageTextView.contentSize)
+        //        print(messageTextView.contentSize)
         messageTextView.textColor = UIColor.lightGrayColor()
         messageTextView.text = messageTextViewPlaceholder
-        messageTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
-        messageTextView.layer.borderWidth = 1.0
+//        messageTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
+//        messageTextView.layer.borderWidth = 1.0
         self.addSubview(messageTextView)
         
-        sendMessageButton.frame.origin.x = messageTextView.bounds.maxX + leftInset
+        sendMessageButton.frame.origin.x = messageTextView.bounds.maxX + leftInset + sendButtonAndMessageTextViewGap
         sendMessageButton.center.y = messageTextView.center.y
         
         let a = ATrickyView()
@@ -111,6 +118,8 @@ class TextInputView: UIView {
         orangeBarView.frame.size.height = 1
         orangeBarView.backgroundColor = UIColor.orangeColor()
         self.addSubview(orangeBarView)
+        
+        disableSendMessageButton()
     }
     
     private override init(frame: CGRect) {
@@ -151,39 +160,42 @@ class TextInputView: UIView {
             delegate?.textInputView(didClickedSendMessageButton: trimmedString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))
             self.messageTextView.text = ""
             self.currentMessageTextViewContentHeight = initialMessageTextViewHeight
+            disableSendMessageButton()
         }
     }
     
-    private func hideSendMessageButton() {
+    private func disableSendMessageButton() {
         
-//        let t1 = CGAffineTransformMakeScale(0.1, 1)
-//        let t2 = CGAffineTransformMakeTranslation(self.sendMessageButton.bounds.midX, 0)
-//        let trans = CGAffineTransformConcat(t1, t2)
-//
-//        UIView.animateWithDuration(0.2, delay: 0, options: [], animations: { () -> Void in
-//            self.sendMessageButton.transform = trans
-//            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset
-//            }) { (finished) -> Void in
-//                if finished {
-//                    self.sendMessageButton.hidden = true
-//                    
-//                }
-//        }
+        //        let t1 = CGAffineTransformMakeScale(0.1, 1)
+        //        let t2 = CGAffineTransformMakeTranslation(self.sendMessageButton.bounds.midX, 0)
+        //        let trans = CGAffineTransformConcat(t1, t2)
+        //
+        //        UIView.animateWithDuration(0.2, delay: 0, options: [], animations: { () -> Void in
+        //            self.sendMessageButton.transform = trans
+        //            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset
+        //            }) { (finished) -> Void in
+        //                if finished {
+        //                    self.sendMessageButton.hidden = true
+        //
+        //                }
+        //        }
         
         self.sendMessageButton.enabled = false
         self.sendMessageButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        self.sendMessageButton.layer.borderColor = UIColor.lightGrayColor().CGColor
     }
     
-    private func showSendMessageButton() {
-//        self.sendMessageButton.hidden = false
-//        UIView.animateWithDuration(0.15, delay: 0, options: [], animations: { () -> Void in
-////            self.sendMessageButton.transform = CGAffineTransformMakeScale(1, 1)
-//            self.sendMessageButton.transform = CGAffineTransformIdentity
-//            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset - self.sendMessageButton.bounds.width
-//            }, completion: nil)
+    private func enableSendMessageButton() {
+        //        self.sendMessageButton.hidden = false
+        //        UIView.animateWithDuration(0.15, delay: 0, options: [], animations: { () -> Void in
+        ////            self.sendMessageButton.transform = CGAffineTransformMakeScale(1, 1)
+        //            self.sendMessageButton.transform = CGAffineTransformIdentity
+        //            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - 2 * self.leftInset - self.sendMessageButton.bounds.width
+        //            }, completion: nil)
         
         self.sendMessageButton.enabled = true
         self.sendMessageButton.setTitleColor(self.sendMessageButton.tintColor, forState: UIControlState.Normal)
+        self.sendMessageButton.layer.borderColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9).CGColor
     }
 }
 
@@ -198,9 +210,9 @@ extension TextInputView : UITextViewDelegate {
         // detect text change
         
         if messageTextView.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty {
-            hideSendMessageButton()
+            disableSendMessageButton()
         } else {
-            showSendMessageButton()
+            enableSendMessageButton()
         }
     }
     
