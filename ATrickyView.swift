@@ -45,8 +45,8 @@ class ATrickyView: UIView {
         self.frame = UIScreen.mainScreen().bounds
         self.frame.size.height = barHeight
         self.backgroundColor = UIColor.clearColor()
-        self.layer.borderColor = UIColor.greenColor().CGColor
-        self.layer.borderWidth = 3.0
+//        self.layer.borderColor = UIColor.greenColor().CGColor
+//        self.layer.borderWidth = 3.0
         self.userInteractionEnabled = false
         print("acc view setup with height \(barHeight)")
     }
