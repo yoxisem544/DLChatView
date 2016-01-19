@@ -57,6 +57,9 @@ class TextInputView: UIView {
         self.addSubview(sendMessageButton)
         
         messageTextView = UITextView(frame: self.frame)
+        let leftInset: CGFloat = 8
+        messageTextView.frame.size.width -= leftInset
+        messageTextView.frame.origin.x += leftInset
         messageTextView.frame.size.width -= 30
         messageTextView.frame.size.height = 38
         messageTextView.center.y = self.bounds.midY
@@ -130,34 +133,25 @@ class TextInputView: UIView {
     }
     
     func hideSendMessageButton() {
-//        UIView.animateWithDuration(20.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
-//            self.sendMessageButton.transform = CGAffineTransformMakeScale(0.01, 0.01)
-//            self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width
-//            }, completion: { (finished) -> Void in
-//                if finished {
-//                    self.sendMessageButton.hidden = true
-//                }
-//        })
-        UIView.animateWithDuration(0.1, delay: 0, options: .CurveEaseIn, animations: { () -> Void in
-            self.sendMessageButton.transform = CGAffineTransformMakeScale(0.01, 0.01)
+        
+        let t1 = CGAffineTransformMakeScale(0.1, 1)
+        let t2 = CGAffineTransformMakeTranslation(self.sendMessageButton.bounds.midX, 0)
+        let trans = CGAffineTransformConcat(t1, t2)
+
+        UIView.animateWithDuration(0.2, delay: 0, options: [], animations: { () -> Void in
+            self.sendMessageButton.transform = trans
             self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width
             }) { (finished) -> Void in
                 if finished {
                     self.sendMessageButton.hidden = true
-                    let t1 = CGAffineTransformMakeScale(0, 1)
-                    let t2 = CGAffineTransformMakeTranslation(self.sendMessageButton.bounds.midX, 0)
-                    let trans = CGAffineTransformConcat(t1, t2)
-                    self.sendMessageButton.transform = trans
+                    
                 }
         }
     }
     
     func showSendMessageButton() {
-        UIView.animateWithDuration(0.15) { () -> Void in
-            
-        }
-        UIView.animateWithDuration(0.1, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-            self.sendMessageButton.hidden = false
+        self.sendMessageButton.hidden = false
+        UIView.animateWithDuration(0.15, delay: 0, options: [], animations: { () -> Void in
 //            self.sendMessageButton.transform = CGAffineTransformMakeScale(1, 1)
             self.sendMessageButton.transform = CGAffineTransformIdentity
             self.messageTextView.frame.size.width = UIScreen.mainScreen().bounds.width - self.sendMessageButton.frame.width
