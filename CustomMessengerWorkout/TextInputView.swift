@@ -20,6 +20,7 @@ class TextInputView: UIView {
     
     var sendMessageButton: UIButton!
     var messageTextView: UITextView!
+    let messageTextViewPlaceholder: String = "來點訊息吧..."
     var currentMessageTextViewContentHeight: CGFloat! = 38.0 {
         didSet {
             if currentMessageTextViewContentHeight <= maxMessgeBarHeight {
@@ -45,13 +46,13 @@ class TextInputView: UIView {
         self.init(frame: CGRectZero)
         self.frame = UIScreen.mainScreen().bounds
         self.frame.size.height = 44
-        self.backgroundColor = UIColor.yellowColor()
+        self.backgroundColor = UIColor.whiteColor()
         
         sendMessageButton = UIButton(type: UIButtonType.System)
         sendMessageButton.frame = CGRectMake(0, 0, 30, 30)
         sendMessageButton.setTitle("HI", forState: UIControlState.Normal)
         sendMessageButton.titleLabel?.font = UIFont.systemFontOfSize(18)
-        sendMessageButton.backgroundColor = UIColor.grayColor()
+//        sendMessageButton.backgroundColor = UIColor.grayColor()
         sendMessageButton.addTarget(self, action: "sendMessageButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(sendMessageButton)
         
@@ -64,11 +65,13 @@ class TextInputView: UIView {
         print(messageTextView.contentSize)
         print(messageTextView.frame)
         messageTextView.backgroundColor = UIColor.clearColor()
-        messageTextView.layer.borderWidth = 2.0
-        messageTextView.layer.borderColor = UIColor.blackColor().CGColor
+//        messageTextView.layer.borderWidth = 2.0
+//        messageTextView.layer.borderColor = UIColor.blackColor().CGColor
         messageTextView.font = UIFont.systemFontOfSize(16)
         messageTextView.delegate = self
         print(messageTextView.contentSize)
+        messageTextView.textColor = UIColor.lightGrayColor()
+        messageTextView.text = messageTextViewPlaceholder
         self.addSubview(messageTextView)
         
         sendMessageButton.frame.origin.x = messageTextView.bounds.maxX
@@ -127,6 +130,20 @@ extension TextInputView : UITextViewDelegate {
         } else {
             // smaller size
             self.currentMessageTextViewContentHeight = messageTextView.contentSize.height
+        }
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.textColor == UIColor.lightGrayColor() {
+            textView.textColor = UIColor.blackColor()
+            textView.text = ""
+        }
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = messageTextViewPlaceholder
+            textView.textColor = UIColor.lightGrayColor()
         }
     }
 }
