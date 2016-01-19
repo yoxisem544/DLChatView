@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4Sm-GZ-9sh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PfY-QE-GqV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -95,6 +95,24 @@
             </objects>
             <point key="canvasLocation" x="305" y="1103"/>
         </scene>
+        <!--Test Inherit View Controller-->
+        <scene sceneID="Zep-wz-Bts">
+            <objects>
+                <viewController id="PfY-QE-GqV" customClass="TestInheritViewController" customModule="CustomMessengerWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yaj-T2-jld"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zp0-Au-aiE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wot-yk-fLN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8z-uF-Y7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-335" y="2320"/>
+        </scene>
         <!--Animation View Controller-->
         <scene sceneID="Xnt-AC-Gg4">
             <objects>
@@ -113,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="321" y="2442"/>
         </scene>
-        <!--Bubble View Controller-->
+        <!--Messages View Controller-->
         <scene sceneID="dJ1-3f-nij">
             <objects>
-                <viewController id="4Sm-GZ-9sh" customClass="BubbleViewController" customModule="CustomMessengerWorkout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Sm-GZ-9sh" customClass="DLMessagesViewController" customModule="CustomMessengerWorkout" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XbT-OW-88H"/>
                         <viewControllerLayoutGuide type="bottom" id="Xm7-cp-XAY"/>
@@ -133,16 +151,16 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="197"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buV-Hx-meG" id="Eon-H9-AiI">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="196.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="196"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phv-dW-ncg">
-                                                    <rect key="frame" x="8" y="8" width="42" height="20.5"/>
+                                                    <rect key="frame" x="8" y="8" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ze1-rt-iAD">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ze1-rt-iAD">
                                                     <rect key="frame" x="8" y="36" width="420" height="152"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -174,9 +192,6 @@
                             <constraint firstItem="fi9-tM-Q0k" firstAttribute="top" secondItem="gd6-ys-zlX" secondAttribute="top" id="zsx-qI-1rp"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="bubbleTableView" destination="fi9-tM-Q0k" id="GP9-bi-f7X"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOy-7c-Gw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

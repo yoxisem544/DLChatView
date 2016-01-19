@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestInheritViewController: UIViewController {
+class TestInheritViewController: DLMessagesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

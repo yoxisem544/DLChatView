@@ -10,7 +10,7 @@ import UIKit
 
 class DLMessagesViewController: UIViewController {
     
-    @IBOutlet weak var bubbleTableView: UITableView!
+    var bubbleTableView: UITableView!
     var keyboardTextInputView: TextInputView!
     var kbHeight: CGFloat!
     
@@ -18,6 +18,9 @@ class DLMessagesViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        bubbleTableView = UITableView(frame: UIScreen.mainScreen().bounds)
+        self.view.addSubview(bubbleTableView)
+        
         bubbleTableView.delegate = self
         bubbleTableView.dataSource = self
         
