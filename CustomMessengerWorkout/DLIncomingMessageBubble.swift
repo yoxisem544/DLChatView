@@ -16,16 +16,19 @@ class DLIncomingMessageBubble: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        textlabel.layer.cornerRadius = 6.0
-        textlabel.layer.borderColor = UIColor.grayColor().CGColor
+        textlabel.layer.cornerRadius = 10.0
+        textlabel.layer.borderColor = UIColor(red: 74/255.0, green: 74/255.0, blue: 74/255.0, alpha: 1).CGColor
         textlabel.layer.borderWidth = 1.0
 //        textlabel.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         print(textlabel.frame)
-        textlabel.font = UIFont.systemFontOfSize(18.0)
+        textlabel.font = UIFont.systemFontOfSize(16.0)
+        textlabel.textColor = UIColor(red: 74/255.0, green: 74/255.0, blue: 74/255.0, alpha: 1)
         
         userImageView.layer.cornerRadius = userImageView.bounds.width / 2
         userImageView.clipsToBounds = true
         userImageView.contentMode = .ScaleAspectFill
+        
+        self.selectionStyle = .None
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

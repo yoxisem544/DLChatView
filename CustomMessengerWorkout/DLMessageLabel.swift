@@ -18,7 +18,7 @@ class DLMessageLabel: UILabel {
     }
     */
     
-    var textInsets = UIEdgeInsetsMake(0, 10, 0, 10)
+    var textInsets = UIEdgeInsetsMake(10, 10, 10, 10)
     
     override func textRectForBounds(bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
         var rect = textInsets.apply(bounds)

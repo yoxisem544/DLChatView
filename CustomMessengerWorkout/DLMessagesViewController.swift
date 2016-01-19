@@ -36,6 +36,8 @@ class DLMessagesViewController: UIViewController {
         
         bubbleTableView.keyboardDismissMode = .Interactive
         
+        bubbleTableView.separatorStyle = .None
+        
         keyboardTextInputView = TextInputView()
         keyboardTextInputView.frame.origin.y = UIScreen.mainScreen().bounds.maxY - keyboardTextInputView.bounds.height
         keyboardTextInputView.delegate = self
@@ -72,7 +74,7 @@ extension DLMessagesViewController : UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCellWithIdentifier(Identifier.DLIncomingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLIncomingMessageBubble
 //        let cell = tableView.dequeueReusableCellWithIdentifier(Identifier.DLOutgoingMessageBubbleIdentifier, forIndexPath: indexPath) as! DLOutgoingMessageBubble
         
-        let s = ["BBC專訪11位候選", "jaksjkas", "a"]
+        let s = ["幹你媽的回去當心北市長啦", "不要擔心他1/16就回來當了","選後新民意既已讓民進黨全面執政，可提早進場一展執政抱負卻一再牽拖，民進黨真的做好執政準備了嗎？", "jaksjkas", "a"]
         cell.textlabel.text = s[random()%3]
         let img = ["11.jpg", "60.jpg", "1.jpg"]
         cell.userImageView.image = UIImage(named: img[random()%3])
