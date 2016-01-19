@@ -106,6 +106,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		632E0A6C1C4E5F8C0063B941 /* DLMessageView */ = {
+			isa = PBXGroup;
+			children = (
+				6329ACA31C473DDE009F958D /* DLMessagesViewController.swift */,
+				632E0A691C4E1B3E0063B941 /* DLMessageData.swift */,
+				632E0A671C4E138E0063B941 /* DLMessageLabel.swift */,
+				63CDC4451C4DEE69005B5D3D /* TestInheritViewController.swift */,
+				632E0A5B1C4DFECE0063B941 /* DLIncomingMessageBubble.swift */,
+				632E0A5D1C4DFEE00063B941 /* DLIncomingMessageBubble.xib */,
+				632E0A651C4E0FB50063B941 /* DLOutgoingMessageBubble.swift */,
+				632E0A631C4E0FA30063B941 /* DLOutgoingMessageBubble.xib */,
+			);
+			name = DLMessageView;
+			sourceTree = "<group>";
+		};
 		6368EBD11C45F303008649AF = {
 			isa = PBXGroup;
 			children = (
@@ -135,14 +150,7 @@
 				6329ACAB1C47807B009F958D /* AnimationViewController.swift */,
 				6368EC0D1C46411E008649AF /* ATrickyView.swift */,
 				6329ACA91C47589D009F958D /* TextInputView.swift */,
-				6329ACA31C473DDE009F958D /* DLMessagesViewController.swift */,
-				632E0A691C4E1B3E0063B941 /* DLMessageData.swift */,
-				632E0A671C4E138E0063B941 /* DLMessageLabel.swift */,
-				63CDC4451C4DEE69005B5D3D /* TestInheritViewController.swift */,
-				632E0A5B1C4DFECE0063B941 /* DLIncomingMessageBubble.swift */,
-				632E0A5D1C4DFEE00063B941 /* DLIncomingMessageBubble.xib */,
-				632E0A651C4E0FB50063B941 /* DLOutgoingMessageBubble.swift */,
-				632E0A631C4E0FA30063B941 /* DLOutgoingMessageBubble.xib */,
+				632E0A6C1C4E5F8C0063B941 /* DLMessageView */,
 				6329ACA51C473EBE009F958D /* BubbleLeftTableViewCell.swift */,
 				6368EC0B1C463E8D008649AF /* AccViewController.swift */,
 				6329ACA71C4751C1009F958D /* 11.jpg */,
