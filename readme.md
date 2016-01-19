@@ -9,7 +9,7 @@
 
 ## how to use it
 1. 可以下載整個專案，裡面包含Demo專案，以及`DLMessageView`
-2. 可以閱讀下面的[安裝法](https://github.com/yoxisem544/DLChatView#how-to-use-it)
+2. 可以閱讀下面的[安裝法](https://github.com/yoxisem544/DLChatView#setup)
 
 clone it!
 
