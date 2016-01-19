@@ -20,7 +20,7 @@ class TestInheritViewController: DLMessagesViewController {
 
         // Do any additional setup after loading the view.
         messages = []
-        for _ in 1...30 {
+        for _ in 1...3 {
             let userId = random()%2
 //            print(userId)
             let userImage = userId == 1 ? UIImage(named: "1.jpg") : nil
@@ -59,5 +59,11 @@ class TestInheritViewController: DLMessagesViewController {
 extension TestInheritViewController : DLMessagesViewControllerDelegate {
     func DLMessagesViewControllerDidClickedMessageButton(withReturnMessage message: String?) {
         print("message \(message) sent!")
+        let message = DLMessageData(userId: "\(thisUserId)", userImage: nil, message: message)
+        messages?.append(message)
+        let indexPath = NSIndexPath(forRow: messages!.count - 1, inSection: 0)
+        
+        bubbleTableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        finishSentMessage()
     }
 }
