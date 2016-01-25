@@ -59,25 +59,11 @@ class DLMessagesViewController: UIViewController {
         let indexPath = NSIndexPath(forRow: numbers - 1, inSection: 0)
         bubbleTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
         print(bubbleTableView.contentSize.height)
-        logContentSize()
     }
     
-    func finishSentMessage() {
-        let number = bubbleTableView.numberOfRowsInSection(0) - 1
-        let indexPath = NSIndexPath(forRow: number, inSection: 0)
-//        print(bubbleTableView.contentSize.height)
-//        print(bubbleTableView.contentSize)
-        bubbleTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-    }
-    
-    func logContentSize() {
-        print("======fuck=======")
-        print(bubbleTableView.contentSize)
-        print("======fuck=======")
-    }
-    func actualContentSize() -> CGSize {
-        bubbleTableView.layoutIfNeeded()
-        return bubbleTableView.contentSize
+    func insertAndUpdateMessageView(atIndexPath indexPath: NSIndexPath) {
+        bubbleTableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
+        bubbleTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
     }
 }
 
