@@ -61,9 +61,17 @@ class DLMessagesViewController: UIViewController {
         print(bubbleTableView.contentSize.height)
     }
     
-    func insertAndUpdateMessageView(atIndexPath indexPath: NSIndexPath) {
-        bubbleTableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
-        bubbleTableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: false)
+    func finishedSendingMessage() {
+        let rows = bubbleTableView.numberOfRowsInSection(0)
+        // rows is always actul count
+        // pass in rows in inserting
+        bubbleTableView.insertRowsAtIndexPaths([NSIndexPath(forRow: rows, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Bottom)
+        // rows here no need to -1
+        bubbleTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: rows, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
+    }
+    
+    func messageRecieved() {
+        finishedSendingMessage()
     }
 }
 
