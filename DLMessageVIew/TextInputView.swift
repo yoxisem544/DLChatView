@@ -17,7 +17,9 @@ class TextInputView: UIView {
     // Drawing code
     }
     */
-    
+	
+	private var cameraButton: UIButton!
+	private let cameraButtonSize: CGSize = CGSize(width: 30, height: 24)
     private var sendMessageButton: UIButton!
     private let sendMessageButtonSize: CGSize = CGSize(width: 61, height: 30)
     private var messageTextView: UITextView!
@@ -72,7 +74,7 @@ class TextInputView: UIView {
         sendMessageButton.frame = CGRectZero
         sendMessageButton.frame.size = sendMessageButtonSize
         sendMessageButton.setTitle("傳送", forState: UIControlState.Normal)
-        sendMessageButton.titleLabel?.font = UIFont.systemFontOfSize(18)
+        sendMessageButton.titleLabel?.font = UIFont.systemFontOfSize(16)
         sendMessageButton.contentHorizontalAlignment = .Center
         sendMessageButton.contentVerticalAlignment = .Center
         sendMessageButton.tintColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9)
@@ -80,13 +82,23 @@ class TextInputView: UIView {
         sendMessageButton.layer.borderColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9).CGColor
         sendMessageButton.layer.borderWidth = 1.0
 //        sendMessageButton.backgroundColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9)
-        sendMessageButton.addTarget(self, action: "sendMessageButtonClicked", forControlEvents: UIControlEvents.TouchUpInside)
+		sendMessageButton.addTarget(self, action: #selector(sendMessageButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(sendMessageButton)
+		
+		// camera button
+		cameraButton = UIButton(type: UIButtonType.System)
+		cameraButton.frame.origin.x = leftInset
+		cameraButton.frame.size = cameraButtonSize
+		cameraButton.setImage(UIImage(named: "CameraButton"), forState: UIControlState.Normal)
+		cameraButton.addTarget(self, action: #selector(openCameraButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)
+		cameraButton.tintColor = UIColor(red: 248/255.0, green: 150/255.0, blue: 128/255.0, alpha: 0.9)
+		self.addSubview(cameraButton)
         
         messageTextView = UITextView(frame: self.frame)
         messageTextView.frame.size.width -= 2 * leftInset + sendButtonAndMessageTextViewGap
-        messageTextView.frame.origin.x += leftInset
+        messageTextView.frame.origin.x += leftInset + cameraButton.frame.maxX
         messageTextView.frame.size.width -= sendMessageButtonSize.width
+		messageTextView.frame.size.width -= cameraButtonSize.width + leftInset
         messageTextView.frame.size.height = initialMessageTextViewHeight
         messageTextView.center.y = self.bounds.midY
         messageTextView.textAlignment = .Natural
@@ -105,9 +117,10 @@ class TextInputView: UIView {
 //        messageTextView.layer.borderWidth = 1.0
         self.addSubview(messageTextView)
         
-        sendMessageButton.frame.origin.x = messageTextView.bounds.maxX + leftInset + sendButtonAndMessageTextViewGap
+        sendMessageButton.frame.origin.x = messageTextView.frame.maxX + sendButtonAndMessageTextViewGap
         sendMessageButton.center.y = messageTextView.center.y
-        
+        cameraButton.center.y = messageTextView.center.y
+		
         let a = ATrickyView()
         a.delegate = self
         messageTextView.inputAccessoryView = a
@@ -146,6 +159,8 @@ class TextInputView: UIView {
             self.messageTextView.frame.size.height = self.currentMessageTextViewContentHeight
             // move it
             self.messageTextView.center.y = self.bounds.midY
+			// move camera
+			self.cameraButton.center.y = self.sendMessageButton.center.y
         }
         
         if let a = messageTextView.inputAccessoryView as? ATrickyView {
@@ -163,6 +178,11 @@ class TextInputView: UIView {
             disableSendMessageButton()
         }
     }
+	
+	internal func openCameraButtonClicked() {
+		print("openCameraButtonClicked")
+		delegate?.textInputViewDidClickCameraButton()
+	}
     
     private func disableSendMessageButton() {
         
@@ -235,6 +255,7 @@ protocol TextInputViewDelegate {
     func textInputView(didUpdateKeyboardFrame kbRect: CGRect?, textInputView :TextInputView)
     func textInputView(didUpdateFrame textInputView: TextInputView)
     func textInputView(didClickedSendMessageButton message: String?)
+	func textInputViewDidClickCameraButton()
 }
 
 extension TextInputView : ATrickyViewDelegate {
